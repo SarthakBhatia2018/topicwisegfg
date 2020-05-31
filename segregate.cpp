@@ -49,7 +49,7 @@ node *segregate(node *head)
             else
             {
                 prev->next = cur->next;
-                cur->next = head;
+                    cur->next = head;
                 head = cur;
                 cur = prev->next;
             }
