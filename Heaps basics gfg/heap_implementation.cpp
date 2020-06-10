@@ -1,10 +1,12 @@
 #include <iostream>
 #include <vector>
+#include <climits>
 
 using namespace std;
 class minHeap
 {
-private:
+    // private:
+public:
     // Current size of the heap
     int size;
     // Max size of the heap
@@ -71,6 +73,70 @@ int minHeap::extractMin()
     else
     {
         int min = heap[0];
-        
+        heap[0] = heap[size - 1];
+        --size;
+        heapify(0);
+        return min;
     }
+    return -1;
+}
+
+void minHeap::printHeap()
+{
+    for (int i = 0; i < size; ++i)
+        cout << heap[i] << " ";
+    cout << endl;
+}
+
+// void minHeap::heapify(int i)
+// {
+//     int l = left(i);
+//     int r = right(i);
+//     heap[size] = INT_MAX;
+//     while (l < size || r < size)
+//     {
+//         if (l >= size)
+//             l = size;
+//         if (r >= size)
+//             r = size;
+//         int x = heap[l] < heap[r] ? l : r;
+//         if (heap[x] < heap[i])
+//         {
+//             swap(heap[x], heap[i]);
+//             l = left(x);
+//             r = right(x);
+//             i = x;
+//         }
+//         else
+//             return;
+//     }
+// }
+
+void minHeap::heapify(int i)
+{
+    int l = left(i);
+    int r = right(i);
+    int smallest = i;
+
+    if (l < size && heap[l] < heap[smallest])
+        smallest = l;
+    else if (r < size && heap[r] < heap[smallest])
+        smallest = r;
+
+    if (smallest != i)
+    {
+        swap(heap[smallest], heap[i]);
+        heapify(smallest);
+    }
+}
+int main()
+{
+    minHeap h(10);
+    h.insert(1);
+    h.insert(10);
+    h.insert(-1);
+    h.insert(-100);
+    h.insert(11);
+    cout << h.extractMin();
+    return 0;
 }
