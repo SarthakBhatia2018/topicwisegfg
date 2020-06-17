@@ -7,6 +7,9 @@
         "vector": "cpp",
         "xhash": "cpp",
         "xstring": "cpp",
-        "xtree": "cpp"
+        "xtree": "cpp",
+        "queue": "cpp",
+        "string": "cpp",
+        "map": "cpp"
     }
 }

@@ -4,27 +4,44 @@
 
 using namespace std;
 
+// void sort_nearly_sorted(int *arr, int n, int k)
+// {
+//     priority_queue<int, vector<int>, greater<int>> p;
+//     int j = 0;
+//     for (int i = 0; i < n; ++i)
+//     {
+//         p.push(arr[i]);
+//         if (p.size() > k)
+//         {
+//             arr[j] = p.top();
+//             p.pop();
+//             ++j;
+//         }
+//     }
+//     while (p.size() > 0)
+//     {
+//         arr[j] = p.top();
+//         p.pop();
+//         ++j;
+//     }
+// }
+
 void sort_nearly_sorted(int *arr, int n, int k)
 {
-    priority_queue<int, vector<int>, greater<int>> p;
-    int j = 0;
-    for (int i = 0; i < n; ++i)
+    for (int j = 1; j < n; ++j)
     {
-        p.push(arr[i]);
-        if (p.size() > k)
+        int key = arr[j];
+        int i = j - 1;
+        while (i >= 0 && key < arr[i])
         {
-            arr[j] = p.top();
-            p.pop();
-            ++j;
+            arr[i + 1] = arr[i];
+            --i;
         }
-    }
-    while (p.size() > 0)
-    {
-        arr[j] = p.top();
-        p.pop();
-        ++j;
+        arr[i + 1] = key;
     }
 }
+
+// 3,5, 6, 2, 8, 10, 9
 
 void print_Arr(int arr[], int n)
 {

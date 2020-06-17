@@ -6,7 +6,7 @@ using namespace std;
 
 class maxHeap
 {
-private:
+public:
     int size;
     int capacity;
     vector<int> heap;
@@ -83,7 +83,7 @@ void maxHeap::heapify(int i)
         max = l;
 
     if (r < size && heap[r] > heap[max])
-        max = l;
+        max = r;
 
     if (max != i)
     {
@@ -122,5 +122,12 @@ int main()
     h.insert(-15);
     h.insert(245);
     h.insert(52);
+    cout << h.extractmax() << endl;
+    // h.print_heap();
+    // cout << h.extractmax();
+    cout << endl;
+    for (int i = 0; i < h.size; ++i)-
+        cout << h.heap[i] << " ";
+    // h.print_heap();
     return 0;
 }
